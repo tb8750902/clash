@@ -29,31 +29,70 @@ dns:
     - tls://1.0.0.1:853
     - tls://dns.google:853
 proxies:
-  - { name: "印尼测试)", type: ss, server: "yinni345.xyz", port: 4001, password: "787ab299-29fd-4b07-9d05-3825ed3599cf", cipher: "aes-128-gcm" }
+  - { name: "abc)", type: ss, server: "yinni345.xyz", port: 4001, password: "787ab299-29fd-4b07-9d05-3825ed3599cf", cipher: "aes-128-gcm" }
+
 proxy-groups:
-  - {name: "🎯 总模式", type: select, proxies: ["Ⓜ️ 延迟最低", "Ⓜ️ 负载均衡", "Ⓜ️ 故障切换", "♻️ 手动切换", "DIRECT"]}
-  - {name: "Ⓜ️ 延迟最低", type: url-test, proxies: ["印尼测试"], url: "https://www.gstatic.com/generate_204", interval: 300}
-  - {name: "Ⓜ️ 故障切换", type: fallback, proxies: ["印尼测试"], url: "https://www.gstatic.com/generate_204", interval: 300}
-  - {name: "Ⓜ️ 负载均衡", type: load-balance, proxies: ["印尼测试"], url: "https://www.gstatic.com/generate_204", interval: 300}
-  - {name: "♻️ 手动切换", type: select, proxies: ["印尼测试"]}
-  - {name: "♻️ 手动切换1", type: select, proxies: ["印尼测试"]}
-  - {name: "♻️ 手动切换2", type: select, proxies: ["印尼测试"]}
-  - {name: "♻️ 手动切换3", type: select, proxies: ["印尼测试"]}
-  - { name: "🍎 苹果服务", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
-  - { name: "🧩 微软服务", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
-  - { name: "📲 聊天软件", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
-  - { name: "📺 巴哈姆特", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
-  - { name: "📹 YouTube", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
-  - { name: "🎥 NETFLIX", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
-  - { name: "⛩ 日韩媒体", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
-  - { name: "🌍 国外媒体", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
-  - { name: "🌏 港台媒体", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
-  - { name: "🇺🇳 国外网站", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
-  - { name: "🇨🇳 国内网站", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
-  - { name: "🎮 游戏平台", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
-  - { name: "🐟 漏网之鱼", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
-  - { name: "🛑 全球拦截", type: select, proxies: ["REJECT", "DIRECT"] } 
-  - { name: "⛔ 应用拦截", type: select, proxies: ["REJECT", "DIRECT"] }
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - DIRECT
+      - abc
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - abc
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🎯 全球直连
+      - abc
+  - name: 📲 电报信息
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - abc
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - 🚀 节点选择
+      - abc
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - abc
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
+  - name: 🛑 全球拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🍃 应用净化
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - abc
 
 rules:
 # 本地/局域网地址
