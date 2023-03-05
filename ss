@@ -29,7 +29,7 @@ dns:
     - tls://1.0.0.1:853
     - tls://dns.google:853
 proxies:
-  - { name: "abc)", type: ss, server: "yinni345.xyz", port: 4001, password: "787ab299-29fd-4b07-9d05-3825ed3599cf", cipher: "aes-128-gcm" }
+  - { name: "abc", type: ss, server: "yinni345.xyz", port: 4001, password: "787ab299-29fd-4b07-9d05-3825ed3599cf", cipher: "aes-128-gcm" }
 
 proxy-groups:
   - name: 🚀 节点选择
