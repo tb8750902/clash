@@ -28,20 +28,17 @@ dns:
     - 8.8.4.4
     - tls://1.0.0.1:853
     - tls://dns.google:853
-
 proxies:
-  - {"name":"香港IPLC专线(奈飞专用)","type":"trojan","server":"ae.yinni1236.xyz","port":443,"udp":true,"password":"woainizhongguo","sni":"ae.yinni1236.xyz","skip-cert-verify":true}
   - { name: "印尼测试)", type: ss, server: "yinni345.xyz", port: 4001, password: "787ab299-29fd-4b07-9d05-3825ed3599cf", cipher: "aes-128-gcm" }
-
 proxy-groups:
   - {name: "🎯 总模式", type: select, proxies: ["Ⓜ️ 延迟最低", "Ⓜ️ 负载均衡", "Ⓜ️ 故障切换", "♻️ 手动切换", "DIRECT"]}
-  - {name: "Ⓜ️ 延迟最低", type: url-test, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"], url: "https://www.gstatic.com/generate_204", interval: 300}
-  - {name: "Ⓜ️ 故障切换", type: fallback, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"], url: "https://www.gstatic.com/generate_204", interval: 300}
-  - {name: "Ⓜ️ 负载均衡", type: load-balance, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"], url: "https://www.gstatic.com/generate_204", interval: 300}
-  - {name: "♻️ 手动切换", type: select, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"]}
-  - {name: "♻️ 手动切换1", type: select, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"]}
-  - {name: "♻️ 手动切换2", type: select, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"]}
-  - {name: "♻️ 手动切换3", type: select, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"]}
+  - {name: "Ⓜ️ 延迟最低", type: url-test, proxies: ["印尼测试"], url: "https://www.gstatic.com/generate_204", interval: 300}
+  - {name: "Ⓜ️ 故障切换", type: fallback, proxies: ["印尼测试"], url: "https://www.gstatic.com/generate_204", interval: 300}
+  - {name: "Ⓜ️ 负载均衡", type: load-balance, proxies: ["印尼测试"], url: "https://www.gstatic.com/generate_204", interval: 300}
+  - {name: "♻️ 手动切换", type: select, proxies: ["印尼测试"]}
+  - {name: "♻️ 手动切换1", type: select, proxies: ["印尼测试"]}
+  - {name: "♻️ 手动切换2", type: select, proxies: ["印尼测试"]}
+  - {name: "♻️ 手动切换3", type: select, proxies: ["印尼测试"]}
   - { name: "🍎 苹果服务", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
   - { name: "🧩 微软服务", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
   - { name: "📲 聊天软件", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
