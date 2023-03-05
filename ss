@@ -17,14 +17,15 @@ experimental:
 
 dns:
   enable: true
+  listen: 0.0.0.0:23453
+  ipv6: false
+  enhanced-mode: redir-host 
   nameserver:
-    - 119.29.29.29
-    - 223.5.5.5
+    - https://doh.pub/dns-query
+    - https://223.5.5.5/dns-query
   fallback:
-    - 8.8.8.8
-    - 8.8.4.4
-    - tls://1.0.0.1:853
-    - tls://dns.google:853
+    - tls://1.1.1.1:853
+    - tls://dns.google
 proxies:
   - { name: "abc", type: ss, server: "yinni345.xyz", port: 4001, password: "787ab299-29fd-4b07-9d05-3825ed3599cf", cipher: "aes-128-gcm" }
 
