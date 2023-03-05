@@ -5,12 +5,21 @@
 # 使用模版：V2RaySE 默认模版
 # 节点数量：1
 ####################################
-mixed-port: 7890
+port: 3333
+socks-port: 23456
+redir-port: 23457
 allow-lan: true
-log-level: info
-external-controller: 0.0.0.0:9090
+mode: rule
+log-level: error
+external-controller: 192.168.50.1:9990
+experimental:
+  ignore-resolve-fail: true
+
 dns:
-  enabled: true
+  enable: true
+  listen: 0.0.0.0:23453
+  ipv6: false
+  enhanced-mode: redir-host 
   nameserver:
     - 119.29.29.29
     - 223.5.5.5
@@ -21,69 +30,33 @@ dns:
     - tls://dns.google:853
 
 proxies:
-  - {"name":"ae.yinni1236.xyz","type":"trojan","server":"ae.yinni1236.xyz","port":443,"udp":true,"password":"woainizhongguo","sni":"ae.yinni1236.xyz","skip-cert-verify":true}
+  - {"name":"香港IPLC专线(奈飞专用)","type":"trojan","server":"ae.yinni1236.xyz","port":443,"udp":true,"password":"woainizhongguo","sni":"ae.yinni1236.xyz","skip-cert-verify":true}
+  - { name: "印尼测试)", type: ss, server: "yinni345.xyz", port: 4001, password: "787ab299-29fd-4b07-9d05-3825ed3599cf", cipher: "aes-128-gcm" }
+
 proxy-groups:
-  - name: 🚀 节点选择
-    type: select
-    proxies:
-      - ♻️ 自动选择
-      - DIRECT
-      - ae.yinni1236.xyz
-  - name: ♻️ 自动选择
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    proxies:
-      - ae.yinni1236.xyz
-  - name: 🌍 国外媒体
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🎯 全球直连
-      - ae.yinni1236.xyz
-  - name: 📲 电报信息
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-      - ae.yinni1236.xyz
-  - name: Ⓜ️ 微软服务
-    type: select
-    proxies:
-      - 🎯 全球直连
-      - 🚀 节点选择
-      - ae.yinni1236.xyz
-  - name: 🍎 苹果服务
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-      - ae.yinni1236.xyz
-  - name: 🎯 全球直连
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀 节点选择
-      - ♻️ 自动选择
-  - name: 🛑 全球拦截
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-  - name: 🍃 应用净化
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-  - name: 🐟 漏网之鱼
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-      - ♻️ 自动选择
-      - ae.yinni1236.xyz
+  - {name: "🎯 总模式", type: select, proxies: ["Ⓜ️ 延迟最低", "Ⓜ️ 负载均衡", "Ⓜ️ 故障切换", "♻️ 手动切换", "DIRECT"]}
+  - {name: "Ⓜ️ 延迟最低", type: url-test, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"], url: "https://www.gstatic.com/generate_204", interval: 300}
+  - {name: "Ⓜ️ 故障切换", type: fallback, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"], url: "https://www.gstatic.com/generate_204", interval: 300}
+  - {name: "Ⓜ️ 负载均衡", type: load-balance, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"], url: "https://www.gstatic.com/generate_204", interval: 300}
+  - {name: "♻️ 手动切换", type: select, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"]}
+  - {name: "♻️ 手动切换1", type: select, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"]}
+  - {name: "♻️ 手动切换2", type: select, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"]}
+  - {name: "♻️ 手动切换3", type: select, proxies: ["香港IPLC专线(奈飞专用)","印尼测试","台湾IPLC专线","日本IPLC专线","韩国IPLC专线","阿根廷IPLC专线","土耳其IPLC专线","新加坡iplc专线（奈飞专用）","俄罗斯专线","美国专线(奈飞专用)"]}
+  - { name: "🍎 苹果服务", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
+  - { name: "🧩 微软服务", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
+  - { name: "📲 聊天软件", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
+  - { name: "📺 巴哈姆特", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
+  - { name: "📹 YouTube", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
+  - { name: "🎥 NETFLIX", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
+  - { name: "⛩ 日韩媒体", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
+  - { name: "🌍 国外媒体", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
+  - { name: "🌏 港台媒体", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
+  - { name: "🇺🇳 国外网站", type: select, proxies: ["🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3","DIRECT"]}
+  - { name: "🇨🇳 国内网站", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
+  - { name: "🎮 游戏平台", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
+  - { name: "🐟 漏网之鱼", type: select, proxies: ["DIRECT","🎯 总模式","Ⓜ️ 负载均衡","Ⓜ️ 延迟最低","Ⓜ️ 故障切换","♻️ 手动切换","♻️ 手动切换1","♻️ 手动切换2","♻️ 手动切换3"]}
+  - { name: "🛑 全球拦截", type: select, proxies: ["REJECT", "DIRECT"] } 
+  - { name: "⛔ 应用拦截", type: select, proxies: ["REJECT", "DIRECT"] }
 
 rules:
 # 本地/局域网地址
